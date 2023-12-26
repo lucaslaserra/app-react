@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.css";
@@ -17,23 +17,40 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 //   return (e.target.value);
 // };
 
-function Counter(){
-  const [mensaje,setMensaje] = useState("");
+function Counter() {
+  const [mensaje, setMensaje] = useState("");
 
-  return <>
-   <input onChange={e => setMensaje(e.target.value)}
-   />
-   <button onClick={() => {
-    alert("El mensaje es: "+mensaje)
-   }}>
-    Guardar
-   </button>
-  </>
+  const [counter, setCounter] = useState(0);
+  useEffect(() => {
+    console.log("render");
+  }, [counter]);
+
+  return (
+    <>
+      <input onChange={(e) => setMensaje(e.target.value)} />
+      <button
+        onClick={() => {
+          alert("El mensaje es: " + mensaje);
+        }}
+      >
+        Guardar
+      </button>
+      <hr />
+      <h1>Counter: {counter}</h1>
+      <button
+        onClick={() => {
+          setCounter(counter + 1);
+        }}
+      >
+        Incrementar
+      </button>
+    </>
+  );
 }
 
 root.render(
   <React.StrictMode>
-   <Counter/>
+    <Counter />
     {/* <Posts/>  */}
     {/* <TaskCard ready={true} />
     <Saludar/>
