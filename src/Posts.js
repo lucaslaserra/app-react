@@ -7,7 +7,8 @@ export const Posts = () =>{
              .then(data => console.log (data))
              .catch(error => console.log(error))
     }}>
-        Traer datos
+       <VscBug/> 
+       Traer datos
     </button>
 
 
